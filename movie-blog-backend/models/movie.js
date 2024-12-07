@@ -24,9 +24,18 @@ const Movie = sequelize.define('Movie', {
         allowNull: true,
         defaultValue: 0.0,
     },
+    trailerUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     description: {
         type: DataTypes.TEXT,
         allowNull: true,
+    },
+    popularity: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
     },
 }, {
     timestamps: true,

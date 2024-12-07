@@ -27,10 +27,13 @@ const User = sequelize.define('User', {
     role: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 'user', // Varsayılan rol 'user'
+        defaultValue: 'user',
+    },
+    preferredGenres: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true,
     },
 }, {
     timestamps: true,
 });
-
 module.exports = User;

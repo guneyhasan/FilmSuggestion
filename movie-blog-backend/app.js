@@ -36,6 +36,16 @@ const blogRoutes = require('./routes/blogRoutes');
 
 app.use('/api/blogs', blogRoutes);
 
+// backend tarafinda denemek icin basit view
+
+const viewRoutes = require('./routes/viewRoutes');
+
+app.use('/views', viewRoutes);
+
+const adminViewRoutes = require('./routes/adminViewRoutes');
+
+app.use('/admin', express.urlencoded({ extended: true }), adminViewRoutes);
+
 (async () => {
     await User.sync({ alter: true });
     await Movie.sync({ alter: true });
