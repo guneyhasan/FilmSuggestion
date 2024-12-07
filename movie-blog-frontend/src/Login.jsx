@@ -24,6 +24,12 @@ const Login = () => {
 
                 <button type="submit" className="login-button">Login</button>
             </form>
+
+            <div className="login-footer">
+                <a href="#forgot-password" className="login-link">Forgot Password?</a>
+                <span className="login-divider">|</span>
+                <a href="#create-account" className="login-link">Create Account</a>
+            </div>
         </div>
     );
 };

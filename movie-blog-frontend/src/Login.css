@@ -49,3 +49,26 @@
 .login-button:hover {
     background-color: #3700b3; /* Daha koyu mor hover efekti */
 }
+
+/* Footer links */
+.login-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.login-link {
+    color: #6200ea;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+.login-divider {
+    color: #888;
+}
