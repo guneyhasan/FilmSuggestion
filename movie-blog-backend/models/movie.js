@@ -1,36 +1,35 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const User = sequelize.define('User', {
+const Movie = sequelize.define('Movie', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
     },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true,
-        },
-    },
-    password: {
+    title: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    role: {
+    genre: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: 'user', // Varsayılan rol 'user'
+    },
+    releaseYear: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    rating: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+        defaultValue: 0.0,
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: true,
     },
 }, {
     timestamps: true,
 });
 
-module.exports = User;
+module.exports = Movie;

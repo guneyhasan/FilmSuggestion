@@ -1,6 +1,9 @@
 const express = require('express');
 const { connectDatabase } = require('./config/database');
 const User = require('./models/user');
+const Movie = require('./models/movie');
+const Blog = require('./models/blog');
+
 
 const app = express();
 app.use(express.json());
@@ -19,11 +22,23 @@ app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-(async () => {
-    await User.sync({ alter: true }); // Tabloları oluştur veya mevcut yapıyı güncelle
-})();
-
 
 const userRoutes = require('./routes/userRoutes');
 
 app.use('/api/users', userRoutes);
+
+
+const movieRoutes = require('./routes/movieRoutes');
+
+app.use('/api/movies', movieRoutes);
+
+const blogRoutes = require('./routes/blogRoutes');
+
+app.use('/api/blogs', blogRoutes);
+
+(async () => {
+    await User.sync({ alter: true });
+    await Movie.sync({ alter: true });
+    await Blog.sync({ alter: true });
+})();
+

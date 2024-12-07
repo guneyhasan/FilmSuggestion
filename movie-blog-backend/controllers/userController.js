@@ -3,8 +3,8 @@ const User = require('../models/user');
 // Yeni kullanıcı oluştur
 const createUser = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
-        const newUser = await User.create({ username, email, password });
+        const { username, email, password, role } = req.body; // role parametresini al
+        const newUser = await User.create({ username, email, password, role });
         res.status(201).json(newUser);
     } catch (error) {
         res.status(500).json({ message: 'Error creating user', error: error.message });
