@@ -1,0 +1,50 @@
+.create-account-container {
+    width: 90%; /* Ekranın %90'ını kaplar */
+    max-width: 600px; /* Maksimum genişliği artırıldı */
+    padding: 40px; /* İç boşluk artırıldı */
+    background-color: #1e1e1e; /* Daha açık koyu bir ton */
+    border-radius: 12px; /* Köşeler daha yuvarlatıldı */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Daha yumuşak bir gölge efekti */
+    text-align: center;
+}
+
+.create-account-title {
+    margin-bottom: 20px;
+    font-size: 28px; /* Başlık boyutu artırıldı */
+    color: white;
+}
+
+.create-account-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-account-label {
+    margin-bottom: 8px;
+    text-align: left;
+    font-size: 16px; /* Yazı boyutu büyütüldü */
+    color: white;
+    font-size: 18px; /* Düğme yazı boyutu artırıldı */
+    cursor: pointer;
+}
+
+.create-account-input {
+    margin-bottom: 20px; /* Aralar daha geniş */
+    padding: 12px; /* Daha fazla iç boşluk */
+    border: none;
+    border-radius: 6px; /* Daha yuvarlak köşeler */
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+}
+
+.create-account-input::placeholder {
+    color: #aaa;
+}
+
+.create-account-button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px; /* Daha yuvarlak köşeler */
+    background-color: #6200ea; /* Mor düğme rengi */
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Link bileşeni
 import "./Login.css";
 
 const Login = () => {
@@ -26,9 +27,9 @@ const Login = () => {
             </form>
 
             <div className="login-footer">
-                <a href="#forgot-password" className="login-link">Forgot Password?</a>
+                <Link to="/forgot-password" className="login-link">Forgot Password?</Link>
                 <span className="login-divider">|</span>
-                <a href="#create-account" className="login-link">Create Account</a>
+                <Link to="/create-account" className="login-link">Create Account</Link>
             </div>
         </div>
     );
