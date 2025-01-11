@@ -13,7 +13,7 @@ function BlogPage() {
   const [siteRating, setSiteRating] = useState(0); // Site puanı
 
   const movieRating = 8.7; // Filmin IMDb puanı
-  const youtubeVideoId = "tgbNymZ7vqY"; // YouTube video ID (YouTube URL'sindeki v= parametresinden alınır)
+  const youtubeVideoId = "wb49-oV0F78"; // YouTube video ID (YouTube URL'sindeki v= parametresinden alınır)
 
   // Site puanını hesaplamak için bir efekt
   useEffect(() => {
@@ -116,7 +116,7 @@ function BlogPage() {
 
         {/* Yorum Alanı */}
         <div className="comment-section">
-          <h2>Yorumlar</h2>
+          <h2>Yorumunuz</h2>
           <textarea
             className="comment-input"
             placeholder="Yorumunuzu buraya yazın..."
