@@ -5,6 +5,8 @@ import CreateAccount from "./CreateAccount";
 import ForgotPassword from "./ForgotPassword"; // Forgot Password bileşeni
 import MainPage from "./MainPage";
 import BlogPage from "./BlogPage";
+import ProfilePage from "./ProfilePage";
+
 function App() {
     return (
         <Router>
@@ -15,6 +17,7 @@ function App() {
                     <Route path="/forgot-password" element={<ForgotPassword />} />
                     <Route path="/main-page" element={<MainPage />} />  
                     <Route path="/blog-page" element={<BlogPage />} />
+                    <Route path="/profile-page" element={<ProfilePage />} />
                 </Routes>
             </div>
         </Router>

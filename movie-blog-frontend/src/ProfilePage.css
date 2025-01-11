@@ -1,0 +1,93 @@
+/* Navigasyon Barı */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e50914;
+    padding: 10px 20px;
+  }
+  
+  .navbar-left,
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-item {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+  }
+  
+  .navbar-item:hover {
+    text-decoration: underline;
+  }
+  
+  .search-input {
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .navbar-profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  
+  /* Profil Kısmı */
+  .profile-header {
+    background-color: #141414;
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .profile-details {
+    text-align: left;
+  }
+  
+  .profile-username {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .profile-description {
+    font-size: 1rem;
+    color: #ccc;
+  }
+  
+  .profile-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .profile-tab {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .profile-tab:hover {
+    background-color: #444;
+  }
+  

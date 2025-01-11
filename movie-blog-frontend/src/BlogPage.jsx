@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
+import { FaThumbsUp, FaPlus, FaSave } from "react-icons/fa"; // İkonları import edin
 import "./BlogPage.css";
 
 function BlogPage() {
@@ -13,7 +14,7 @@ function BlogPage() {
   const [siteRating, setSiteRating] = useState(0); // Site puanı
 
   const movieRating = 8.7; // Filmin IMDb puanı
-  const youtubeVideoId = "wb49-oV0F78"; // YouTube video ID (YouTube URL'sindeki v= parametresinden alınır)
+  const youtubeVideoId = "wb49-oV0F78"; // YouTube video ID
 
   // Site puanını hesaplamak için bir efekt
   useEffect(() => {
@@ -112,6 +113,19 @@ function BlogPage() {
               <span className="rating-value">{siteRating} / 10</span>
             </div>
           </div>
+        </div>
+
+        {/* Butonlar */}
+        <div className="video-buttons">
+          <button className="video-button">
+            <FaThumbsUp style={{ marginRight: "8px" }} /> Beğen
+          </button>
+          <button className="video-button">
+            <FaPlus style={{ marginRight: "8px" }} /> İzleme Listeme Ekle
+          </button>
+          <button className="video-button">
+            <FaSave style={{ marginRight: "8px" }} /> Kaydet
+          </button>
         </div>
 
         {/* Yorum Alanı */}

@@ -265,5 +265,29 @@ body {
     padding-left: 140px; /* Başlığın soldan boşluğu */
   }
   
+  /* Video Butonları */
+.video-buttons {
+  display: flex;
+  justify-content: flex-end;  /*Butonları sol tarafa hizala */
+  padding-right: 800px;
+  gap: 10px;
+}
+
+.video-button {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.video-button:hover {
+  background-color: #b20710;
+}
+
+
+
   
   
