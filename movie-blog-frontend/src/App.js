@@ -11,7 +11,7 @@ import MoviesPage from "./pages/Movies/MoviesPage";
 import TvShowsPage from "./pages/TvShows/TvShowsPage";
 import BlogPage from "./pages/Blog/BlogPage";
 import CreateBlog from "./pages/Blog/CreateBlog/CreateBlog";
-import Profile from "./pages/Profile/Profile";
+import Profile from "./pages/Profile/ProfilePage";
 import SearchResults from "./pages/SearchResults/SearchResults";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import NotFound from "./pages/NotFound/NotFound";

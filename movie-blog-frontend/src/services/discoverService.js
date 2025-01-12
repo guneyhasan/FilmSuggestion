@@ -51,7 +51,7 @@ export const discoverService = {
       const allResults = [];
 
       const promises = Array.from({ length: totalPages }, (_, i) => 
-        axios.get(`${API_BASE_URL}/discover/movies`, {
+        axios.get(`${API_BASE_URL}/discover/movie`, {
           params: {
             page: i + 1,
             sort_by: sortBy,

@@ -229,4 +229,37 @@ router.delete('/:commentId', authMiddleware, async (req, res) => {
     }
 });
 
+// Kullanıcının tüm yorumlarını getir
+router.get('/user/:userId', authMiddleware, async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        
+        const [comments] = await sequelize.query(`
+            SELECT 
+                c.id,
+                c.content,
+                c.ref_type,
+                c.ref_id,
+                c.created_at,
+                CASE 
+                    WHEN c.ref_type = 'movie' THEN m.title
+                    WHEN c.ref_type = 'tv' THEN t.title
+                END as title
+            FROM public.comments c
+            LEFT JOIN public.movies m ON c.ref_type = 'movie' AND c.ref_id = m.id
+            LEFT JOIN public.tv_shows t ON c.ref_type = 'tv' AND c.ref_id = t.id
+            WHERE c.user_id = :userId
+            ORDER BY c.created_at DESC
+        `, {
+            replacements: { userId }
+        });
+
+        res.json(comments);
+
+    } catch (error) {
+        console.error('Kullanıcı yorumları alınırken hata:', error);
+        res.status(500).json({ message: 'Yorumlar alınamadı' });
+    }
+});
+
 module.exports = router; 

@@ -66,25 +66,38 @@ async function discoverMedia(type, queryParams) {
     }
 }
 
-// GET /api/discover/movie (movies değil, movie olmalı)
+// GET /api/discover/movie
 router.get('/movie', async (req, res) => {
     try {
-        const result = await discoverMedia('movie', {
-            page: req.query.page,
-            sort_by: req.query.sort_by,
-            primary_release_year: req.query.primary_release_year,
-            with_genres: req.query.with_genres,
-            vote_average_gte: req.query['vote_average.gte'],
-            language: req.query.language
+        console.log('Film discover isteği:', req.query);
+
+        const result = await axios.get(`${TMDB_BASE_URL}/discover/movie`, {
+            params: {
+                api_key: TMDB_API_KEY,
+                page: req.query.page || 1,
+                sort_by: req.query.sort_by || 'popularity.desc',
+                year: req.query.primary_release_year,
+                with_genres: req.query.with_genres || '',
+                'vote_average.gte': req.query['vote_average.gte'] || 0,
+                language: req.query.language || 'tr-TR',
+                include_adult: false,
+                include_video: false,
+                with_watch_monetization_types: 'flatrate'
+            }
         });
 
-        res.json(result);
+        console.log('TMDB yanıtı:', {
+            total_results: result.data.total_results,
+            total_pages: result.data.total_pages
+        });
+
+        res.json(result.data);
 
     } catch (error) {
-        console.error('Film discover hatası:', error);
+        console.error('Film discover hatası:', error.response?.data || error);
         res.status(500).json({ 
             message: 'Film listesi alınamadı',
-            error: error.message 
+            error: error.response?.data?.status_message || error.message 
         });
     }
 });
