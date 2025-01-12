@@ -1,44 +1,43 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../config/database');
 
-const Movie = sequelize.define('Movie', {
-    id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
+class Movie extends Model {}
+
+Movie.init({
+    tmdb_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true
     },
     title: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     },
-    genre: {
-        type: DataTypes.STRING,
-        allowNull: false,
+    overview: {
+        type: DataTypes.TEXT
     },
-    releaseYear: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+    poster_path: {
+        type: DataTypes.STRING
     },
-    rating: {
-        type: DataTypes.FLOAT,
-        allowNull: true,
-        defaultValue: 0.0,
+    backdrop_path: {
+        type: DataTypes.STRING
     },
-    trailerUrl: {
-        type: DataTypes.STRING,
-        allowNull: true,
+    release_date: {
+        type: DataTypes.DATE
     },
-    description: {
-        type: DataTypes.TEXT,
-        allowNull: true,
+    vote_average: {
+        type: DataTypes.FLOAT
     },
     popularity: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 0,
+        type: DataTypes.FLOAT
     },
+    is_featured: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    }
 }, {
-    timestamps: true,
+    sequelize,
+    modelName: 'Movie'
 });
 
 module.exports = Movie;

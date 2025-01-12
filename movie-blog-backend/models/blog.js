@@ -1,47 +1,37 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
+const sequelize = require('../config/database');
 
-const Blog = sequelize.define('Blog', {
+const Blog = sequelize.define('blogs', {
     id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true
     },
     title: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     },
     content: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: false
     },
-    author: {
-        type: DataTypes.STRING,
-        allowNull: false,
+    author_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
+    created_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
+    },
+    updated_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
+    }
 }, {
+    tableName: 'blogs',
+    schema: 'public',
     timestamps: true,
+    underscored: true
 });
 
-const Comment = sequelize.define('Comment', {
-    id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
-    },
-    content: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-    },
-    userId: {
-        type: DataTypes.UUID,
-        allowNull: false,
-    },
-}, {
-    timestamps: true,
-});
-
-// Blog ile Yorumlar arasında ilişki
-Blog.hasMany(Comment, { foreignKey: 'blogId' });
-Comment.belongsTo(Blog, { foreignKey: 'blogId' });
 module.exports = Blog;

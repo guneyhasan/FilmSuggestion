@@ -1,27 +1,67 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./Login";
-import CreateAccount from "./CreateAccount";
-import ForgotPassword from "./ForgotPassword"; // Forgot Password bileşeni
-import MainPage from "./MainPage";
-import BlogPage from "./BlogPage";
-import ProfilePage from "./ProfilePage";
-import AdminPage from "./AdminPage";
+import { AuthProvider } from './context/AuthContext';
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/Main/MainPage";
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import MovieDetail from "./pages/MovieDetail/MovieDetail";
+import TvShowDetail from "./pages/TvShowDetail/TvShowDetail";
+import MoviesPage from "./pages/Movies/MoviesPage";
+import TvShowsPage from "./pages/TvShows/TvShowsPage";
+import BlogPage from "./pages/Blog/BlogPage";
+import CreateBlog from "./pages/Blog/CreateBlog/CreateBlog";
+import Profile from "./pages/Profile/Profile";
+import SearchResults from "./pages/SearchResults/SearchResults";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import NotFound from "./pages/NotFound/NotFound";
+import "./App.css";
+
 function App() {
+    useEffect(() => {
+        const handleScroll = () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <Router>
-            <div className="App">
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/create-account" element={<CreateAccount />} />
-                    <Route path="/forgot-password" element={<ForgotPassword />} />
-                    <Route path="/main-page" element={<MainPage />} />  
-                    <Route path="/blog-page" element={<BlogPage />} />
-                    <Route path="/profile-page" element={<ProfilePage />} />
-                    <Route path="/admin-page" element={<AdminPage />} />
-                </Routes>
-            </div>
-        </Router>
+        <AuthProvider>
+            <Router>
+                <div className="app">
+                    <Navbar />
+                    <main>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/movies" element={<MoviesPage />} />
+                            <Route path="/tv-shows" element={<TvShowsPage />} />
+                            <Route path="/movie/:id" element={<MovieDetail />} />
+                            <Route path="/tv/:id" element={<TvShowDetail />} />
+                            <Route path="/blog-page" element={<BlogPage />} />
+                            <Route path="/search" element={<SearchResults />} />
+
+                            <Route element={<PrivateRoute />}>
+                                <Route path="/profile" element={<Profile />} />
+                                <Route path="/create-blog" element={<CreateBlog />} />
+                            </Route>
+
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </main>
+                </div>
+            </Router>
+        </AuthProvider>
     );
 }
 
